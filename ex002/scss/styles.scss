@@ -1,0 +1,51 @@
+$bg-color: #c76494;
+
+@mixin directions($direction, $rotation) {
+  position: absolute;
+  transform: translate(-50%, -50%) rotateZ($rotation);
+
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+
+  @if $direction == top {
+    left: 50%;
+    top: calc(50% - 50px);
+    background-color: #1877f2;
+  } @else if $direction == right {
+    top: 50%;
+    left: calc(50% + 50px);
+    background-color: #ee254c;
+  } @else if $direction == bottom {
+    left: 50%;
+    top: calc(50% + 50px);
+    background-color: #8fc216;
+  } @else if $direction == left {
+    top: 50%;
+    left: calc(50% - 50px);
+    background-color: #ffdb07;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-color;
+}
+
+div > img {
+    max-width: 100%
+}
+
+.top {@include directions(top, -90deg);}
+.right {@include directions(right, 0deg);}
+.left {@include directions(left, 180deg);}
+.bottom {@include directions(bottom, 90deg);}
