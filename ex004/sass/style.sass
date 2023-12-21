@@ -1,0 +1,39 @@
+$bg-color: #c76494
+
+%box-model
+    position: absolute
+    width: 50px
+    height: 50px
+    background-color: white
+
+@mixin move($position-x, $position-y) 
+
+    @extend %box-model
+
+    @if $position-x == left
+        left: 0%
+    @else if $position-x == middle
+        left: 50%
+    @else if $position-x == right
+        right: 0%
+
+    @if $position-y == top
+        top: 0%
+    @else if $position-y == middle
+        top: 50%
+    @else if $position-y == bottom
+        bottom: 0%
+
+* 
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body 
+    width: 100%
+    min-height: 100vh
+    background-color: $bg-color
+
+div 
+    @include move(middle, middle)
+    
